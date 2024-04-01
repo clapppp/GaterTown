@@ -10,9 +10,9 @@ REACT:
 5.컴포넌트가 리렌더링 되는 조건. (PROPS 변화, STATE변화, 상위 컴포넌트 리랜더링)
 6.useState, useEffect, ...
 
-로그인 화면 --- 지역 선택 --- 회의 공간 --- 
+로그인 화면 --- 지역 선택 --- 회의 공간 ---
 
-
-
+websocket 설명 사이트 : <https://www.daddyprogrammer.org/post/4077/spring-websocket-chatting/>
+websocket client 확장 프로그램 사이트 : <https://chromewebstore.google.com/detail/simple-websocket-client/pfdhoblngboilpfeibdedpjgfnlcodoo>
 
 V1.

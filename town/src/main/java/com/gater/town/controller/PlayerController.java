@@ -1,27 +1,21 @@
 package com.gater.town.controller;
 
-import java.util.List;
-
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.gater.town.domain.Player;
-import com.gater.town.repository.PlayerRepository;
-
 import lombok.RequiredArgsConstructor;
 
-@Controller
 @RequiredArgsConstructor
+@RestController //객체 반환하면 알아서 json 변환
 public class PlayerController {
-    
-    private final PlayerRepository playerRepository;
 
-    @MessageMapping("/render")
-    @SendTo("/client")
-    public List<Player> update(Player client) {
-        playerRepository.updatePlayer(client);
-        return playerRepository.allPlayer();
+    @PostMapping("/register")
+    public Player register(@RequestParam String username) {
+        Player player = new Player();
+        player.setUsername(username);
+        return player;
     }
 
 }

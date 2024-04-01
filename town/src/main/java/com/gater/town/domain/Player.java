@@ -8,17 +8,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class Player {
-
-    private int x;
-
-    private int y;
-
+    private MessageType type;
+    private Region region;
+    private int x,y;
     private Long id;
-
     private String username;
-
-    
-    public Player(String username) {
-        this.username = username;
-    }
 }
