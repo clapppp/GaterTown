@@ -26,11 +26,6 @@ public class PlayerRoom {
         this.region = region;
     }
 
-    public void enterRoom(WebSocketSession session, Player player) {
-        players.put(session, player);
-        log.info(session.getId() + " entered.");
-    }
-
     public void updatePlayer(WebSocketSession session, Player player) {
         players.put(session, player);
     }

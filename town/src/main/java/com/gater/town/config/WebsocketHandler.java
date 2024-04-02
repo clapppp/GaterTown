@@ -18,8 +18,8 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @RequiredArgsConstructor
 public class WebsocketHandler extends TextWebSocketHandler {
-    private ObjectMapper objectMapper; 
-    private PlayerService playerService;
+    private final ObjectMapper objectMapper; 
+    private final PlayerService playerService;
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
@@ -33,7 +33,7 @@ public class WebsocketHandler extends TextWebSocketHandler {
         log.info(payload);
         Player player = objectMapper.readValue(payload, Player.class);
         PlayerRoom room = playerService.getRoom(player.getRegion());
-        if (player.getType() == MessageType.ENTER) room.enterRoom(session, player);
+
         room.updatePlayer(session, player);
         room.sendAllPlayer();
     }

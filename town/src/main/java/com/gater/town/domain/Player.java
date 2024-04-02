@@ -11,6 +11,13 @@ public class Player {
     private MessageType type;
     private Region region;
     private int x,y;
-    private Long id;
     private String username;
+    
+    @Override
+    public String toString() {
+        return "Player [type=" + type + ", region=" + region + ", x=" + x + ", y=" + y + ", username="
+                + username + "]";
+    }
+
+    
 }
