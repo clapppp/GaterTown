@@ -1,4 +1,4 @@
-package com.gater.town.service;
+package com.gater.town.repository;
 
 import java.util.Map;
 
@@ -9,11 +9,12 @@ import com.gater.town.domain.Region;
 
 
 @Service
-public class PlayerService {
+public class RoomRepository {
     private static final Map<Region, PlayerRoom> rooms = Map.of(
         Region.SEOUL, new PlayerRoom(Region.SEOUL),
         Region.BUSAN, new PlayerRoom(Region.BUSAN),
-        Region.ULSAN, new PlayerRoom(Region.ULSAN)
+        Region.DAEGU, new PlayerRoom(Region.DAEGU),
+        Region.INCHN, new PlayerRoom(Region.INCHN)
     );
 
     public PlayerRoom getRoom(Region region) {

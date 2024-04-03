@@ -9,7 +9,7 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gater.town.domain.Player;
 import com.gater.town.domain.PlayerRoom;
-import com.gater.town.service.PlayerService;
+import com.gater.town.repository.RoomRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class WebsocketHandler extends TextWebSocketHandler {
     private final ObjectMapper objectMapper; 
-    private final PlayerService playerService;
+    private final RoomRepository roomRepository;
 
     @Override
     public void afterConnectionEstablished(@NonNull WebSocketSession session) throws Exception {
@@ -34,7 +34,7 @@ public class WebsocketHandler extends TextWebSocketHandler {
         log.info(payload);
         Player player = objectMapper.readValue(payload, Player.class);
         //발송자 room GET.
-        PlayerRoom room = playerService.getRoom(player.getRegion());
+        PlayerRoom room = roomRepository.getRoom(player.getRegion());
         //room update
         room.updatePlayer(session, player);
         //room send
