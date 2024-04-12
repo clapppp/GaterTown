@@ -14,8 +14,9 @@ function Register() {
 
     function handleSubmit(e) {
         e.preventDefault();
+        
         axios.post("https://sturdy-parakeet-p6jr6r9p65qf7p7r-8080.app.github.dev/register", regist)
-            .then(d => navigate("/"))
+            .then(result => navigate("/", { state: result.data }))
             .catch(err => console.log(err));
     }
 
