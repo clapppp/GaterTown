@@ -1,14 +1,15 @@
 package com.gater.town.repository;
 
+import java.util.Collection;
 import java.util.Map;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import com.gater.town.domain.PlayerRoom;
 import com.gater.town.domain.Region;
 
 
-@Service
+@Repository
 public class RoomRepository {
     private static final Map<Region, PlayerRoom> rooms = Map.of(
         Region.SEOUL, new PlayerRoom(Region.SEOUL),
@@ -19,6 +20,10 @@ public class RoomRepository {
 
     public PlayerRoom getRoom(Region region) {
         return rooms.get(region);
+    }
+
+    public Collection<PlayerRoom> getAll() {
+        return rooms.values();
     }
 
 }

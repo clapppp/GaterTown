@@ -2,19 +2,23 @@ package com.gater.town.dto;
 
 import com.gater.town.domain.Region;
 
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
+@NoArgsConstructor
 public class RegisterDto {
-    @NotNull
+    @NotBlank
     private String id;
-    @NotNull
+    @NotBlank
     private String password;
-    @NotNull
+    @NotBlank
     private String username;
-    @NotNull
+    @NotBlank
     private Region region;
 }
