@@ -13,6 +13,7 @@ function Login() {
     });
 
     useEffect(() => {
+        console.log(state);
         if (state) navigate("/map", { state: state });   
     }, [])
 
@@ -24,9 +25,12 @@ function Login() {
     }
 
     function post(e) {
-        e.prevent.default;
+        e.preventDefault();
         axios.post("https://sturdy-parakeet-p6jr6r9p65qf7p7r-8080.app.github.dev/login", info)
-            .then(result => navigate("/map", { state: result.data }))
+            .then(result => {
+                console.log(result.data)
+                navigate("/map", { state: result.data })
+            })
             .catch(err => console.log(err));
     }
 
