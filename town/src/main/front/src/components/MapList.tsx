@@ -18,7 +18,7 @@ function MapList() {
     return (
         <>
             <header>{state.username}</header>
-            {list.map(map => <Link to={`/map/${map.region}`}>{`/map/${map.region}`}</Link>)}
+            {list.map(map => <p><Link to={`/map/${map.region}`}>{map.region}</Link></p>)}
         </>
     )
 }
