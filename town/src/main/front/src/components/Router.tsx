@@ -10,9 +10,8 @@ function Router() {
             <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                <Route path="/map" element={<MapList />}>
-                    <Route path=":region" element={<MapDetail />} />
-                </Route>
+                <Route path="/map" element={<MapList />} />
+                <Route path="/map/:region" element={<MapDetail />} />
             </Routes>
         </BrowserRouter>
     )

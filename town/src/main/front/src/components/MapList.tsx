@@ -4,6 +4,10 @@ import { Link, useLocation } from "react-router-dom";
 
 function MapList() {
     const { state } = useLocation();
+    // state = player객체
+    // {
+    //  "region" : "SEOUL", ...
+    // }
     const [list, setList] = useState([{
         "region": "",
         "players": {}
@@ -17,8 +21,10 @@ function MapList() {
 
     return (
         <>
-            <header>{state.username}</header>
-            {list.map(map => <p><Link to={`/map/${map.region}`}>{map.region}</Link></p>)}
+            <header>
+                <p>{state.username} from {state.region}</p>
+            </header>
+            {list.map(map => <p><Link to={`/map/${map.region}`} state={state}>{map.region}</Link></p>)}
         </>
     )
 }
