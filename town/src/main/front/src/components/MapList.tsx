@@ -4,10 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 
 function MapList() {
     const { state } = useLocation();
-    // state = player객체
-    // {
-    //  "region" : "SEOUL", ...
-    // }
+    
     const [list, setList] = useState([{
         "region": "",
         "players": {}

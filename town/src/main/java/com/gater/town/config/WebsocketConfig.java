@@ -12,15 +12,6 @@ import lombok.RequiredArgsConstructor;
 @Configuration
 @EnableWebSocketMessageBroker
 public class WebsocketConfig implements WebSocketMessageBrokerConfigurer {
-    
-    //----------------WebSocket version----------
-    // @NonNull
-    // private final WebsocketHandler websocketHandler;
-
-    // @Override
-    // public void registerWebSocketHandlers(@NonNull WebSocketHandlerRegistry registry) {
-    //     registry.addHandler(websocketHandler, "/gatertown/update").setAllowedOrigins("*");
-    // }
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
@@ -30,7 +21,8 @@ public class WebsocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/gatertown").setAllowedOriginPatterns("*");
+        registry.addEndpoint("/gatertown").setAllowedOriginPatterns("*")
+        .withSockJS();
     }
 
 
