@@ -14,7 +14,9 @@ import com.gater.town.domain.Region;
 import com.gater.town.repository.RoomRepository;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 public class UpdateController {
@@ -23,6 +25,7 @@ public class UpdateController {
     @MessageMapping("/gatertown/update/{region}")
     @SendTo("/topic/gatertown/{region}")
     public Collection<Player> update(@DestinationVariable Region region, @Payload Player player) {
+        log.info("server receive : " + player.toString() + " from " + region.toString());
         PlayerRoom room = roomRepository.getRoom(region);
         room.updatePlayer(player.getSeq(), player);
         return room.getAll();
