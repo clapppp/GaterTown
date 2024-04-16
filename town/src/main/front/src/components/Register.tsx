@@ -12,7 +12,7 @@ function Register() {
         "region": ""
     });
 
-    function handleSubmit(e) {
+    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         
         axios.post("https://sturdy-parakeet-p6jr6r9p65qf7p7r-8080.app.github.dev/register", regist)
@@ -20,7 +20,7 @@ function Register() {
             .catch(err => console.log(err));
     }
 
-    function handleChange(e) {
+    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         setRegist({
             ...regist,
             [e.target.name]: e.target.value

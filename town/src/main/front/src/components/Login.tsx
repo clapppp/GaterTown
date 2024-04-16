@@ -14,8 +14,8 @@ function Login() {
 
     useEffect(() => {
         console.log(state);
-        if (state) navigate("/map", { state: state });   
-    }, [])
+        if (state) navigate("/map", { state: state }); 
+    }, [state, navigate])
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         setInfo({
@@ -24,7 +24,7 @@ function Login() {
         })
     }
 
-    function post(e) {
+    function post(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         axios.post("https://sturdy-parakeet-p6jr6r9p65qf7p7r-8080.app.github.dev/login", info)
             .then(result => {
