@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import MapList from "./MapList"
 import Login from "./Login"
 import Register from "./Register"
-import MapDetail from "./Socket"
+import MapDetail from "./MapDetail"
 
 function Router() {
     return (

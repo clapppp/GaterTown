@@ -2,7 +2,6 @@ import { CompatClient, Stomp } from "@stomp/stompjs";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useLocation, useParams } from "react-router-dom"
 import SockJS from "sockjs-client";
-import { connect } from "./MySocket";
 
 type player = {
     region: string,
@@ -17,7 +16,20 @@ function MapDetail() {
     const [player, setPlayer] = useState<player>(location.state);
     const { region } = useParams();
     const client = useRef<CompatClient>();
+    const canvas = useRef<HTMLCanvasElement>(null);
 
+    const connect = useCallback(() => {
+        client.current = Stomp.over(() => {
+            const sock = new SockJS("https://sturdy-parakeet-p6jr6r9p65qf7p7r-8080.app.github.dev/gatertown")
+            return sock
+        })
+        client.current.connect({
+        }, () => {
+            client.current?.subscribe(`/topic/gatertown/${region}`, (message) => {
+                console.log(message.body);
+            })
+        })
+    }, [region])
 
     const send = useCallback((e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -29,8 +41,9 @@ function MapDetail() {
     }, [region,player]);
 
     useEffect(() => {
-        connect(region, client);
-    }, [connect])
+        connect();
+    },[connect])
+    
 
 
     return (
@@ -39,6 +52,8 @@ function MapDetail() {
             <form onSubmit={send}>
                 <input type="submit" />
             </form>
+
+            <canvas ref={canvas} />
         </>
     )
 }
